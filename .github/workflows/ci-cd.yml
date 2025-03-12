@@ -1,19 +1,19 @@
-name: Flask CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
-      - staging
   pull_request:
     branches:
       - main
 
 jobs:
-  build:
-    runs-on: windows-latest  # Use Windows to match your Jenkinsfile
+  test:
+    runs-on: windows-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -21,47 +21,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Create and Activate Virtual Environment
+      - name: Create Virtual Environment
+        run: python -m venv venv
+
+      - name: Activate Virtual Environment and Install Dependencies
         run: |
-          python -m venv venv
           venv\Scripts\activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        shell: cmd
 
-  test:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.12"
-
-      - name: Activate Virtual Environment & Run Tests
+      - name: Run Tests
         run: |
           venv\Scripts\activate
-          python -m unittest discover tests || exit /b 1
-        shell: cmd
-
-  deploy:
-    runs-on: windows-latest
-    needs: test
-    if: github.ref == 'refs/heads/staging'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.12"
-
-      - name: Activate Virtual Environment & Deploy
-        run: |
-          venv\Scripts\activate
-          start /B python app.py
-        shell: cmd
+          python -m unittest discover tests
