@@ -16,11 +16,11 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 bat '''
-                if not exist venv (
-                    python -m venv venv
+                if not exist %VENV_DIR% (
+                    %PYTHON% -m venv %VENV_DIR%
                 )
-                call venv\\Scripts\\activate
-                pip install --upgrade pip
+                call %VENV_DIR%\\Scripts\\activate
+                python -m pip install --upgrade pip
                 pip install -r requirements.txt
                 '''
             }
@@ -29,8 +29,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate
-                python -m unittest discover || exit /b 1
+                call %VENV_DIR%\\Scripts\\activate
+                python -m unittest discover tests || exit /b 1
                 '''
             }
         }
@@ -38,8 +38,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat '''
-                call venv\\Scripts\\activate
-                python app.py
+                call %VENV_DIR%\\Scripts\\activate
+                start /B python app.py
                 '''
             }
         }
