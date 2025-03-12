@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -21,16 +21,62 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Create Virtual Environment
-        run: python -m venv venv
-
-      - name: Activate Virtual Environment and Install Dependencies
+      - name: Install Dependencies
         run: |
-          venv\Scripts\activate
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Tests
         run: |
-          venv\Scripts\activate
+          source venv/bin/activate
           python -m unittest discover tests
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Deploy Application
+        env:
+          FLASK_APP: app.py
+          FLASK_ENV: production
+        run: |
+          source venv/bin/activate
+          python app.py
