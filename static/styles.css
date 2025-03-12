@@ -1,0 +1,83 @@
+/* General Styling */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: 3px solid #007bff;
+}
+
+/* Header Section */
+header {
+    background: linear-gradient(to right, #007bff, #6610f2);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* Features Section */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    color: #007bff;
+}
+
+/* About Section */
+.about-section {
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials */
+.testimonials .card {
+    background-color: #fff;
+    border-left: 5px solid #007bff;
+}
+
+.testimonials p {
+    font-style: italic;
+}
+
+/* CTA Section */
+.cta {
+    background: #007bff;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.cta .btn {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 30px;
+}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header class="text-center my-4">
+    <h1 class="display-4 fw-bold">Welcome to FlaskApp</h1>
+    <p class="lead">A powerful, secure, and modern web application built using Flask.</p>
+    <a href="/about" class="btn btn-primary btn-lg mt-3">Learn More</a>
+</header>
+
+<!-- Features Section -->
+<section class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <h3>🚀 Fast & Efficient</h3>
+                <p>Optimized for speed and efficiency, ensuring smooth performance across all devices.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <h3>💡 Modern UI</h3>
+                <p>Designed with Bootstrap for a sleek, professional, and user-friendly experience.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-4">
+                <h3>🔒 Secure & Reliable</h3>
+                <p>Built with security in mind, ensuring safe data handling and authentication.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="container my-5 text-center">
+    <h2 class="fw-bold">Why Choose FlaskApp?</h2>
+    <p class="text-muted">We provide a feature-rich and scalable web solution that meets modern web development standards.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="https://www.fullstackpython.com/img/logos/flask.jpg" class="img-fluid rounded" alt="Professional Development">
+        </div>
+        <div class="col-md-6 text-start">
+            <h4>🛠️ Easy to Customize</h4>
+            <p>FlaskApp is designed to be flexible and customizable, allowing developers to easily integrate new features.</p>
+
+            <h4>⚡ Lightning Fast Performance</h4>
+            <p>Built on Flask, ensuring minimal latency and quick response times.</p>
+
+            <h4>🌍 Responsive & Scalable</h4>
+            <p>Fully responsive design that adapts to all screen sizes for a seamless experience.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="container my-5">
+    <h2 class="text-center fw-bold">What Our Users Say</h2>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <p>“FlaskApp helped streamline our web development process. The UI is amazing!”</p>
+                <strong>- John Doe, Web Developer</strong>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <p>“A fast and secure framework that allowed us to scale our application efficiently.”</p>
+                <strong>- Jane Smith, Product Manager</strong>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <p>“I love how easy it is to customize. FlaskApp has saved me tons of development time!”</p>
+                <strong>- Michael Lee, Software Engineer</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="container my-5 text-center">
+    <h2 class="fw-bold">Get Started with FlaskApp</h2>
+    <p class="text-muted">Ready to build your next web project? Join us today and explore the power of Flask.</p>
+    <a href="/contact" class="btn btn-success btn-lg">Contact Us</a>
+</section>
+{% endblock %}
